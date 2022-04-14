@@ -1,7 +1,7 @@
 import { Box, Grid, Grow, Paper } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from '../../actions/posts';
+import { fetchPosts, fetchPostsBySearch } from '../../actions/posts';
 import Form from '../../components/Form/Form';
 import Posts from '../../components/Posts/Posts';
 import Paginate from '../../components/Paginate/Paginate';
@@ -18,9 +18,18 @@ export default function Home() {
 
   const query = useQuery();
   const page = query.get('page') || 1;
+  const searchQuery = query.get('searchQuery') || '';
+  const tags = query.get('tags') || '';
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    // console.log(searchQuery);
+    // console.log(tags);
+    if (searchQuery || tags) {
+      // console.log('h');
+      dispatch(fetchPostsBySearch({ search: searchQuery, tags }));
+    } else {
+      dispatch(fetchPosts());
+    }
   }, [refreshCount, dispatch]);
 
   return (

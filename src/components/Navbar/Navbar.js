@@ -37,7 +37,7 @@ export default function Navbar(props) {
   return (
     <HideOnScroll {...props}>
       <AppBar
-        color="primary"
+        color="inherit"
         sx={{
           display: 'flex',
         }}
@@ -57,17 +57,17 @@ export default function Navbar(props) {
           >
             {/* <img src={'/favicon.ico'} alt="My memories" height={40} /> */}
             <Typography
-              component={Link}
-              to="/"
-              variant="h6"
+              color="primary"
+              variant="h5"
               sx={{
                 ml: 1,
-                color: 'white',
                 textDecoration: 'none',
                 '&:hover': {
                   color: 'tomato',
                 },
               }}
+              component={Link}
+              to="/"
             >
               {' '}
               Memories
@@ -108,7 +108,7 @@ export default function Navbar(props) {
             <Button
               component={Link}
               variant="contained"
-              color="secondary"
+              color="primary"
               to="/auth"
             >
               Sign in

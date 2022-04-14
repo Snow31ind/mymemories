@@ -23,8 +23,12 @@ import React from 'react';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deletePost, fetchForm, likePost } from '../../../actions/posts';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 export default function Post({ post }) {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -141,11 +145,14 @@ export default function Post({ post }) {
               {post.tags.map((tag) => `#${tag}`)}
             </Typography>
           </Box>
-          <Typography gutterBottom sx={{ padding: '0 16px' }}>
+          <Typography
+            gutterBottom
+            sx={{ padding: '0 16px', fontWeight: 'bold', fontSize: 22 }}
+          >
             {post.title}
           </Typography>
           <CardContent>
-            <Typography>{post.message}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{post.message}</Typography>
           </CardContent>
         </ButtonBase>
 
@@ -177,11 +184,7 @@ export default function Post({ post }) {
             )}
           </Button>
           {isCreatedByUser && (
-            <Button
-              // onClick={() => editHandler(post._id)}
-              onClick={openMenuHandler}
-              sx={{}}
-            >
+            <Button onClick={openMenuHandler}>
               <MoreHoriz />
             </Button>
           )}

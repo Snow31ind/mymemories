@@ -20,7 +20,7 @@ const SearchEngine = () => {
   const [tags, setTags] = useState([]);
 
   const pressHandler = (e) => {
-    if (e.keyCode === 13) {
+    if (e.code === 'Enter') {
       searchHandler();
     }
   };
@@ -90,11 +90,6 @@ const SearchEngine = () => {
       >
         Search
       </Button>
-      {tags.map((tag) => (
-        <Typography key={tag}>{tag}</Typography>
-      ))}
-
-      <Typography>{search}</Typography>
     </AppBar>
   );
 };

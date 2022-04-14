@@ -26,6 +26,8 @@ const CommentSection = ({ post }) => {
     commentRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 
+  const isUserLoggedIn = user && user.result && user.result.name;
+
   return (
     <Box>
       <Box
@@ -52,7 +54,7 @@ const CommentSection = ({ post }) => {
           ))}
           <Box ref={commentRef} />
         </Box>
-        {user.result.name && (
+        {isUserLoggedIn && (
           <Box sx={{ width: '60%' }}>
             <Typography gutterBottom variant="h6">
               Write a comment

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { LOCAL_BASEURL } from '../constants/baseURL';
 
 const API = axios.create({
-  baseURL: 'https://quangtienmemories.herokuapp.com/',
+  baseURL: LOCAL_BASEURL,
 });
 
 API.interceptors.request.use((req) => {
