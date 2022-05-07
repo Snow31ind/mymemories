@@ -19,11 +19,7 @@ export default function Navbar(props) {
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-  // console.log(user);
-
   useEffect(() => {
-    // const token = user ? user.token : null;
-
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
@@ -36,25 +32,9 @@ export default function Navbar(props) {
 
   return (
     <HideOnScroll {...props}>
-      <AppBar
-        color="inherit"
-        sx={{
-          display: 'flex',
-        }}
-      >
-        <Toolbar
-          sx={{
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'flex-end',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
+      <AppBar color="inherit" sx={{ display: 'flex' }}>
+        <Toolbar sx={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* <img src={'/favicon.ico'} alt="My memories" height={40} /> */}
             <Typography
               color="primary"
@@ -69,17 +49,12 @@ export default function Navbar(props) {
               component={Link}
               to="/"
             >
-              {' '}
               Memories
             </Typography>
           </Box>
           <GrowBox />
           {user ? (
-            <Box
-              sx={{
-                display: 'flex',
-              }}
-            >
+            <Box sx={{ display: 'flex' }}>
               <Avatar
                 alt={user.result.name}
                 src={user.result.imageUrl}
@@ -87,13 +62,7 @@ export default function Navbar(props) {
               >
                 {user.result.name.charAt(0)}
               </Avatar>
-              <Typography
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  mr: 3,
-                }}
-              >
+              <Typography sx={{ display: 'flex', alignItems: 'center', mr: 3 }}>
                 {user.result.name}
               </Typography>
               <Button
@@ -107,8 +76,8 @@ export default function Navbar(props) {
           ) : (
             <Button
               component={Link}
-              variant="contained"
-              color="primary"
+              variant="text"
+              color="secondary"
               to="/auth"
             >
               Sign in

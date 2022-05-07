@@ -12,9 +12,7 @@ const App = () => {
         <Navbar />
         <DrawerHeader />
 
-        <Box sx={{ minHeight: '150vh' }}>
-          <AppRoutes />
-        </Box>
+        <AppRoutes />
       </Box>
     </BrowserRouter>
   );

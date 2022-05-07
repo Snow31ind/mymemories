@@ -1,4 +1,4 @@
-import { Box, Grid, Grow, Paper } from '@mui/material';
+import { Box, Grid, Grow, Paper, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, fetchPostsBySearch } from '../../actions/posts';
@@ -17,15 +17,14 @@ export default function Home() {
   const { refreshCount } = useSelector((state) => state.posts);
 
   const query = useQuery();
+
+  // Query key
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery') || '';
   const tags = query.get('tags') || '';
 
   useEffect(() => {
-    // console.log(searchQuery);
-    // console.log(tags);
     if (searchQuery || tags) {
-      // console.log('h');
       dispatch(fetchPostsBySearch({ search: searchQuery, tags }));
     } else {
       dispatch(fetchPosts());
@@ -34,19 +33,12 @@ export default function Home() {
 
   return (
     <Grow in>
-      <Box
-        sx={{
-          pl: 10,
-          pr: 10,
-          pt: 2,
-        }}
-      >
+      <Box sx={{ pl: 10, pr: 10, pt: 2 }}>
         <Grid
           container
           justify="space-between"
           alignItems="stretch"
           spacing={2}
-          sx={{}}
         >
           <Grid item xs={12} sm={6} md={9}>
             <Posts />

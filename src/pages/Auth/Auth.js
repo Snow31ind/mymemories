@@ -29,7 +29,6 @@ export default function Auth() {
 
   const [isSignup, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
   const [formData, setFormData] = useState(initialFormData);
 
   const submitHandler = (e) => {

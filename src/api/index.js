@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { LOCAL_BASEURL } from '../constants/baseURL';
+import { HEROKU_BASEURL, LOCAL_BASEURL } from '../constants/baseURL';
 
 const API = axios.create({
-  baseURL: LOCAL_BASEURL,
+  baseURL: HEROKU_BASEURL,
 });
 
 API.interceptors.request.use((req) => {
